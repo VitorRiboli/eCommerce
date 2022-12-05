@@ -1,7 +1,7 @@
 package com.commerce.vitor.dto;
 
 import com.commerce.vitor.entities.Product;
-import jakarta.validation.constraints.*;
+import javax.validation.constraints.*;
 
 
 //Objeto para carregar dados de produtos

@@ -1,6 +1,6 @@
 package com.commerce.vitor.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.time.Instant;
 

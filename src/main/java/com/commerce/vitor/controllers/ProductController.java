@@ -6,7 +6,7 @@ import com.commerce.vitor.dto.ProductDTO;
 import com.commerce.vitor.entities.Product;
 import com.commerce.vitor.services.ProductService;
 import com.commerce.vitor.services.exceptions.ResourceNotFoundException;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

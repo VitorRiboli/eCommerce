@@ -4,7 +4,7 @@ import com.commerce.vitor.dto.CustomError;
 import com.commerce.vitor.dto.ValidationError;
 import com.commerce.vitor.services.exceptions.DataBaseException;
 import com.commerce.vitor.services.exceptions.ResourceNotFoundException;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

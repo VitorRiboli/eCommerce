@@ -5,7 +5,7 @@ import com.commerce.vitor.entities.Product;
 import com.commerce.vitor.repositories.ProductRepository;
 import com.commerce.vitor.services.exceptions.DataBaseException;
 import com.commerce.vitor.services.exceptions.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
