@@ -1,5 +1,8 @@
 package com.commerce.vitor.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 
 import java.time.LocalDate;
@@ -7,7 +10,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "tb_user")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +28,7 @@ public class User {
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>(); //roles é uma coleção de GrantedAuthority
 
     public User() {
     }
@@ -79,8 +82,38 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    @Override //Retorna uma coleção de GrantedAuthority, a coleção set<Role> roles, implmeneta a Interface GrantedAuthority
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override //UserName vai ser o email, pois ele é unico
+    public String getUsername() {
+        return email;
+    }
+
+    @Override //Testa se a conta não está expiada
+    public boolean isAccountNonExpired() {
+        return true; //Retonando True apenas para dizer que está tudo OK com a conta
+    }
+
+    @Override //Testa se a conta está bloqueada
+    public boolean isAccountNonLocked() {
+        return true; //Retonando True apenas para dizer que está tudo OK com a conta
+    }
+
+    @Override //Testa se as credenciais estão expiradas
+    public boolean isCredentialsNonExpired() {
+        return true;//Retonando True apenas para dizer que está tudo OK com a conta
+    }
+
+    @Override //Conta habilitada
+    public boolean isEnabled() {
+        return true;//Retonando True apenas para dizer que está tudo OK com a conta
     }
 
     public void setPassword(String password) {

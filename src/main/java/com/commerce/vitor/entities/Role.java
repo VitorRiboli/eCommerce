@@ -1,10 +1,12 @@
 package com.commerce.vitor.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_role")
-public class Role {
+public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +29,7 @@ public class Role {
         this.id = id;
     }
 
+    @Override //Indicando para o compilado ue este método, está implementando o método da Interface GrantedAuthority
     public String getAuthority() {
         return authority;
     }
