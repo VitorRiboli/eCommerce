@@ -3,6 +3,7 @@ package com.commerce.vitor.controllers;
 
 import com.commerce.vitor.dto.CustomError;
 import com.commerce.vitor.dto.ProductDTO;
+import com.commerce.vitor.dto.ProductMinDTO;
 import com.commerce.vitor.entities.Product;
 import com.commerce.vitor.services.ProductService;
 import com.commerce.vitor.services.exceptions.ResourceNotFoundException;
@@ -33,10 +34,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> findAll(
+    public ResponseEntity<Page<ProductMinDTO>> findAll(
             @RequestParam(name = "name", defaultValue = "") String name,
             Pageable pageable) {
-        Page<ProductDTO> dto = service.findAll(name, pageable);
+        Page<ProductMinDTO> dto = service.findAll(name, pageable);
         return ResponseEntity.ok(dto);
     }
 

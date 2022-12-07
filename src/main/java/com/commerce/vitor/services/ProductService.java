@@ -1,6 +1,7 @@
 package com.commerce.vitor.services;
 
 import com.commerce.vitor.dto.ProductDTO;
+import com.commerce.vitor.dto.ProductMinDTO;
 import com.commerce.vitor.entities.Product;
 import com.commerce.vitor.repositories.ProductRepository;
 import com.commerce.vitor.services.exceptions.DataBaseException;
@@ -48,11 +49,11 @@ public class ProductService {
 
     //Retorna uma lista paginada
     @Transactional(readOnly = true)
-    public Page<ProductDTO> findAll(String name, Pageable pageable){
+    public Page<ProductMinDTO> findAll(String name, Pageable pageable){
         //Como é paginação, não se utiliza o List, e sim o Page, tipo de coleção especial para está função
         Page<Product> page = repository.searchByName(name, pageable);
         //O tipo Page não precisa converter para stream, e nem converte-la no final para .toList();
-        return page.map(x -> new ProductDTO(x));
+        return page.map(x -> new ProductMinDTO(x));
     }
 
     //Operação POST, inserir no BD
