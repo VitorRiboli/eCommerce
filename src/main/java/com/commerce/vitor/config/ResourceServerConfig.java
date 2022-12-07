@@ -25,10 +25,8 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    /* //O que está comentado será explicado depois
     @Value("${cors.origins}")
     private String corsOrigins;
-    */
 
     @Autowired
     private Environment env;
@@ -51,10 +49,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         http.authorizeRequests().anyRequest().permitAll();
 
-        // http.cors().configurationSource(corsConfigurationSource());
+        http.cors().configurationSource(corsConfigurationSource());
     }
 
-    /*
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
 
@@ -68,15 +66,16 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);
-        return source;
-    }*/
 
-    /*
+        return source;
+    }
+
     @Bean
     FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean
                 = new FilterRegistrationBean<>(new CorsFilter(corsConfigurationSource()));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
-    }*/
+    }
+
 }
