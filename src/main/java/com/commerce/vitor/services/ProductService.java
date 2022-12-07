@@ -1,7 +1,9 @@
 package com.commerce.vitor.services;
 
+import com.commerce.vitor.dto.CategoryDTO;
 import com.commerce.vitor.dto.ProductDTO;
 import com.commerce.vitor.dto.ProductMinDTO;
+import com.commerce.vitor.entities.Category;
 import com.commerce.vitor.entities.Product;
 import com.commerce.vitor.repositories.ProductRepository;
 import com.commerce.vitor.services.exceptions.DataBaseException;
@@ -20,29 +22,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ProductService {
 
-    //Repository para buscar no BD
     @Autowired
     private ProductRepository repository;
 
-    //Aqui Implementa a Busca no banco de dados
-    //Recebe de argumento um ID
-    //Retorna um Product DTO a partir do ID
-    //Acessa o BD converte e retorna
-    @Transactional(readOnly = true) //Uma operação de leitura, para ficar mais rápido
+    @Transactional(readOnly = true)
     public ProductDTO findById(Long id) {
-        /* Passo a Passo
-        //Acessando o banco de dados e retornando o ID que foi passado
-        Optional<Product> result = repository.findById(id);
-        //Pegando o result
-        Product product = result.get();
-        //convertendo para DTO
-        ProductDTO dto = new ProductDTO(product); //Instanciando com o Construtor Simples
-        return  dto;
-         */
-        //Jeito Simplificado, de 4 linhas para 2
+
         Product product = repository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Recurso não encontrado")); //findById acessa o BD faz consulta SQL
-        //orElseThrow, e para tentar fazer a opreção, caso não consiga lance um erro personalizado
+                () -> new ResourceNotFoundException("Recurso não encontrado"));
 
         return new ProductDTO(product);
     }
@@ -56,14 +43,10 @@ public class ProductService {
         return page.map(x -> new ProductMinDTO(x));
     }
 
-    //Operação POST, inserir no BD
     @Transactional
     public ProductDTO insert(ProductDTO dto){
-        //Instanciando, Recebendo do corpo da requisição
         Product entity = new Product();
-        //Método
         copyDtoToEntity(dto, entity);
-        //salvando no BD
         entity = repository.save(entity);
 
         return  new ProductDTO(entity);
@@ -102,18 +85,19 @@ public class ProductService {
         }
     }
 
-
-    /*  Método copyDtoToEntity é para não precisar ficar repetindo esses comandos abaixo
-        entity.setName(dto.getName());
-        entity.setDescription(dto.getDescription());
-        entity.setImgUrl(dto.getImgUrl());
-        entity.setPrice(dto.getPrice());
-    */
     private void copyDtoToEntity(ProductDTO dto, Product entity) {
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setImgUrl(dto.getImgUrl());
         entity.setPrice(dto.getPrice());
+
+        entity.getCategories().clear();
+
+        for (CategoryDTO catDto : dto.getCategories()) {
+            Category cat = new Category();
+            cat.setId(catDto.getId());
+            entity.getCategories().add(cat);
+        }
     }
 
 }

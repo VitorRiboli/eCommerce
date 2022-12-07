@@ -1,7 +1,10 @@
 package com.commerce.vitor.dto;
 
+import com.commerce.vitor.entities.Category;
 import com.commerce.vitor.entities.Product;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 //Objeto para carregar dados de produtos
@@ -18,6 +21,8 @@ public class ProductDTO {
     @Positive(message = "O preço deve ser positivo") //so aceita valores positivos, preço so vai entrar com valor positivo
     private Double price;
     private String imgUrl;
+    @NotEmpty(message = "Deve ter pelo menos uma categoria")
+    private List<CategoryDTO> categories = new ArrayList<>();
 
     public ProductDTO(){
 
@@ -40,6 +45,9 @@ public class ProductDTO {
         description = entity.getDescription();
         price = entity.getPrice();
         imgUrl = entity.getImgUrl();
+        for (Category cat : entity.getCategories()) {
+            categories.add(new CategoryDTO(cat));
+        }
     }
 
     public Long getId() {
@@ -61,4 +69,9 @@ public class ProductDTO {
     public String getImgUrl() {
         return imgUrl;
     }
+
+    public List<CategoryDTO> getCategories() {
+        return categories;
+    }
+
 }
