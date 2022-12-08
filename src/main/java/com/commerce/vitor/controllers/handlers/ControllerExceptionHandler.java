@@ -3,6 +3,7 @@ package com.commerce.vitor.controllers.handlers;
 import com.commerce.vitor.dto.CustomError;
 import com.commerce.vitor.dto.ValidationError;
 import com.commerce.vitor.services.exceptions.DataBaseException;
+import com.commerce.vitor.services.exceptions.ForbiddenException;
 import com.commerce.vitor.services.exceptions.ResourceNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -46,5 +47,13 @@ public class ControllerExceptionHandler {
 
         return ResponseEntity.status(status).body(err);
     }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<CustomError> forbidden(ForbiddenException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.FORBIDDEN;
+        CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+
 
 }

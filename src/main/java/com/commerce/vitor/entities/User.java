@@ -82,6 +82,15 @@ public class User implements UserDetails {
         this.birthDate = birthDate;
     }
 
+    public boolean hasRole(String roleName) {
+        for (Role role : roles) {
+            if(role.getAuthority().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override //Retorna uma coleção de GrantedAuthority, a coleção set<Role> roles, implmeneta a Interface GrantedAuthority
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
@@ -122,6 +131,10 @@ public class User implements UserDetails {
 
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     @Override
