@@ -1,12 +1,10 @@
 package com.commerce.vitor.controllers;
 
 
-import com.commerce.vitor.dto.CustomError;
+
 import com.commerce.vitor.dto.ProductDTO;
 import com.commerce.vitor.dto.ProductMinDTO;
-import com.commerce.vitor.entities.Product;
 import com.commerce.vitor.services.ProductService;
-import com.commerce.vitor.services.exceptions.ResourceNotFoundException;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.time.Instant;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/products")

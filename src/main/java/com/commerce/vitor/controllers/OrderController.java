@@ -1,7 +1,6 @@
 package com.commerce.vitor.controllers;
 
 import com.commerce.vitor.dto.OrderDTO;
-import com.commerce.vitor.dto.ProductDTO;
 import com.commerce.vitor.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
