@@ -9,8 +9,8 @@
 		<version>2.7.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.devsuperior</groupId>
-	<artifactId>dscatalog</artifactId>
+	<groupId>com.commerce</groupId>
+	<artifactId>vitor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dscatalog</name>
 	<description>Demo project for Spring Boot</description>
@@ -75,6 +75,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 			</plugin>
 		</plugins>
 	</build>
