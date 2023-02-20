@@ -17,7 +17,7 @@ public class AuthService {
 
         //Não contem ADMIN? e Não contem o mesmo ID de me? então lance erro
         if (!me.hasRole("ROLE_ADMIN") && !me.getId().equals(userId)) {
-            throw new ForbiddenException("AAcces denied");
+            throw new ForbiddenException("Access denied");
         }
     }
 }

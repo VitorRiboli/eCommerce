@@ -11,6 +11,7 @@ public class UserDTO {
 
     private Long id;
     private String name;
+
     private String email;
     private String phone;
     private LocalDate birthDate;
@@ -31,7 +32,7 @@ public class UserDTO {
 
     public UserDTO(User entity) {
         id = entity.getId();
-        name = entity.getUsername();
+        name = entity.getName();
         email = entity.getEmail();
         phone = entity.getPhone();
         birthDate = entity.getBirthDate();
@@ -65,4 +66,5 @@ public class UserDTO {
     public List<String> getRoles() {
         return roles;
     }
+
 }

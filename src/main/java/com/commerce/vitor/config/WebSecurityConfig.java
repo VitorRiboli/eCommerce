@@ -5,18 +5,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.web.SecurityFilterChain;
+
 
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-
-    //Classe de configuração
-    //@Bean defini como componente reaproveitavel do sistema
 
     @Value("${jwt.secret}") //value acessa o application.properties e pega o valor em jwt.secret
     private String jwtSecret;
@@ -43,6 +43,7 @@ public class WebSecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    
     /*
     @Bean //@Bean define componente do sistema
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
