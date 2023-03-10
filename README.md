@@ -137,7 +137,7 @@ Informações complementares
 [1] Dados do carrinho de compras: vide caso de uso Gerenciar carrinho
 
   
-<h2>Como criar e executar o Consulta de Vendas localmente</h2>
+<h2>Como criar e executar o e-Commerce</h2>
 
 Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fácil. Certifique-se de ter o Git e JDK17 instalados e siga as instruções abaixo. Precisa de informações adicionais? entre em contato no e-mail vitorriboli6@gmail.com 
 (Estas instruções pressupõem que você esteja instalando como um usuário root.)
