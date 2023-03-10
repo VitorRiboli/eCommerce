@@ -139,7 +139,7 @@ Informações complementares
   
 <h2>Como criar e executar o Consulta de Vendas localmente</h2>
 
-Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fácil. Certifique-se de ter o Git e JDK17 instalados e siga as instruções abaixo. Precisa de informações adicionais? entre em contato no e-mail josecarloscjj@gmail.com 
+Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fácil. Certifique-se de ter o Git e JDK17 instalados e siga as instruções abaixo. Precisa de informações adicionais? entre em contato no e-mail vitorriboli6@gmail.com 
 (Estas instruções pressupõem que você esteja instalando como um usuário root.)
 
 1. Código fonte
@@ -158,5 +158,7 @@ Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fá
 - Java
 - Springboot
 - JPA
+- JWT
 - Maven
+- PostgreSQL
 - H2 Database
